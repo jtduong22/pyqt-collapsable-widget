@@ -48,6 +48,19 @@ class CollapsibleWidget(QtWidgets.QWidget):
         # set height
         self._container_widget.setFixedHeight(height)
 
+    # add widget
+    def add_widget(self, widget):
+        self._container_layout.addWidget(widget)
+
+    # add layout
+    def add_layout(self, layout):
+        self._container_layout.addLayout(layout)
+
+    # set toggled state
+    def set_hidden(self, state: bool):
+        if state != self._is_hidden:
+            self._toggle_widgets()
+
     # return list of all widgets
     def get_widgets(self) -> list:
         return [self._container_layout.itemAt(x).widget() for x in range(self._container_layout.count())]
